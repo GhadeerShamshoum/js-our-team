@@ -34,14 +34,15 @@ const team = [
 
 
 
-let teamCard = document.querySelector('.team-card');
+
 let teamContainer =document.querySelector('.team-container');
 let button = document.getElementById('addMemberButton');
+let inputs = document.querySelectorAll('input')
 
 
 
 
-
+//click(form-add new member)
 button.addEventListener("click", function(){
   
   let newName  = document.getElementById('name').value;
@@ -53,7 +54,9 @@ button.addEventListener("click", function(){
     role:newRole,
     image:newImg,
   }
-  teamCard +=` <div class="team-card">
+
+  //nuove carte (membere)
+  teamContainer.innerHTML +=` <div class="team-card">
     <div class="card-image">
     <img
     src="${newImg}"
@@ -66,32 +69,33 @@ button.addEventListener("click", function(){
     <p>${newRole}</p>
     </div>
     </div>`;
-    teamContainer.innerHTML= teamCard;
+    
 
   team.push(newCard); 
-  console.log(team)
+  console.log(team);
+  inputs.forEach(input=> input.value ="");
   
 });
 
-  
+//le carte di (our team)  
   for(let i=0; i<team.length; i++){
-    teamCard +=` <div class="team-card">
-    <div class="card-image">
-    <img
-    src="${team[i].image}"
-    alt="${team[i].image}"
-    
-    />
-    </div>
-    <div class="card-text">
-    <h3>${team[i].name}</h3>
-    <p>${team[i].role}</p>
-    </div>
+    teamContainer.innerHTML +=` 
+    <div class="team-card">
+      <div class="card-image">
+        <img
+        src="${team[i].image}"
+        alt="${team[i].image}"  
+        />
+      </div>
+      <div class="card-text">
+        <h3>${team[i].name}</h3>
+        <p>${team[i].role}</p>
+      </div>
     </div>`;
   }
   
-  console.log(teamCard)
-  teamContainer.innerHTML = teamCard;
+  console.log(teamContainer)
+  
   
 
 
